@@ -7,7 +7,7 @@
 type GanttCallback = (...args: any[]) => any;
 type GanttEventName = 'onAfterAutoSchedule'|'onAfterBatchUpdate'|'onAfterLightbox'|'onAfterLinkAdd'|'onAfterLinkDelete'|'onAfterLinkUpdate'|'onAfterRedo'|'onAfterTaskAdd'|'onAfterTaskAutoSchedule'|'onAfterTaskDelete'|'onAfterTaskDrag'|'onAfterTaskMove'|'onAfterTaskUpdate'|'onAfterUndo'|'onAjaxError'|'onBeforeAutoSchedule'|'onBeforeBatchUpdate'|'onBeforeCollapse'|'onBeforeDataRender'|'onBeforeExpand'|'onBeforeGanttReady'|'onBeforeGanttRender'|'onBeforeLightbox'|'onBeforeLinkAdd'|'onBeforeLinkDelete'|'onBeforeLinkDisplay'|'onBeforeLinkUpdate'|'onBeforeParse'|'onBeforeRedo'|'onBeforeRowDragEnd'|'onBeforeTaskAdd'|'onBeforeTaskAutoSchedule'|'onBeforeTaskChanged'|'onBeforeTaskDelete'|'onBeforeTaskDisplay'|'onBeforeTaskDrag'|'onBeforeTaskMove'|'onBeforeTaskSelected'|'onBeforeTaskUpdate'|'onBeforeUndo'|'onCircularLinkError'|'onClear'|'onCollapse'|'onColumnResize'|'onColumnResizeEnd'|'onColumnResizeStart'|'onContextMenu'|'onDataRender'|'onEmptyClick'|'onError'|'onExpand'|'onGanttReady'|'onGanttRender'|'onGanttScroll'|'onGridHeaderClick'|'onGridResize'|'onGridResizeEnd'|'onGridResizeStart'|'onLightbox'|'onLightboxButton'|'onLightboxCancel'|'onLightboxChange'|'onLightboxDelete'|'onLightboxSave'|'onLinkClick'|'onLinkDblClick'|'onLinkIdChange'|'onLinkValidation'|'onLoadEnd'|'onLoadStart'|'onMouseMove'|'onOptionsLoad'|'onParse'|'onRowDragEnd'|'onRowDragStart'|'onScaleAdjusted'|'onScaleClick'|'onTaskClick'|'onTaskClosed'|'onTaskCreated'|'onTaskDblClick'|'onTaskDrag'|'onTaskIdChange'|'onTaskLoading'|'onTaskOpened'|'onTaskRowClick'|'onTaskSelected'|'onTaskUnselected'|'onTemplatesReady';
 
-export interface GanttTemplates {
+interface GanttTemplates {
 	/**
 	 * specifies the format of dates that are set by means of API methods. Used to parse incoming dates
 	 * @param date the date which needs formatting
@@ -269,7 +269,7 @@ export interface GanttTemplates {
 
 }
 
-export interface GanttConfigOptions {
+interface GanttConfigOptions {
 	/**
 	 * sets the date format for addTask() method to
 	*/
@@ -289,6 +289,11 @@ export interface GanttConfigOptions {
 	 * defines whether gantt will do autoscheduling on data loading
 	*/
 	auto_scheduling_initial: boolean;
+
+    /**
+     * defines whether gantt will move projects on autoschedule
+     */
+    auto_scheduling_move_projects: boolean;
 
 	/**
 	 * enables the auto scheduling mode, in which tasks will always be rescheduled to the earliest possible date
@@ -802,7 +807,7 @@ export interface GanttConfigOptions {
 
 }
 
-export interface GanttDateHelpers {
+interface GanttDateHelpers {
 	add(origin: Date, count: number, unit: string): Date;
 	copy(origin: Date): Date;
 
@@ -823,21 +828,21 @@ export interface GanttDateHelpers {
 	to_fixed(value: number): string;
 }
 
-export interface GanttHotkeys {
+interface GanttHotkeys {
 	edit_save: number;
 	edit_cancel: number;
 }
 
 //Gantt.locale
 
-export interface GanttLocaleDate {
+interface GanttLocaleDate {
 	month_full: string[];
 	month_short: string[];
 	day_full: string[];
 	day_short: string[];
 }
 
-export interface GanttLocaleLabels {
+interface GanttLocaleLabels {
 	new_task: string;
 	icon_save: string;
 	icon_cancel: string;
@@ -861,19 +866,19 @@ export interface GanttLocaleLabels {
 	years: string;
 }
 
-export interface GanttLocale {
+interface GanttLocale {
 	date: GanttLocaleDate;
 	labels: GanttLocaleLabels;
 }
 
-export interface GanttEnterprise {
+interface GanttEnterprise {
 	/**
 	 * Creates a new instance of Gantt
 	 */
 	getGanttInstance(): GanttStatic;
 }
 
-export interface GanttStatic {
+interface GanttStatic {
 	templates: GanttTemplates;
 	config: GanttConfigOptions;
 	date: GanttDateHelpers;
